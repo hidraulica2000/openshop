@@ -10,4 +10,12 @@
  *
  *= require_self
  *= require_tree .
- */
+*/
+body{
+  padding-top: 40px;
+}
+.form{
+  width: 260px;
+  text-align: center;
+  margin: 0 auto;
+}
