@@ -7,7 +7,7 @@ gem 'rails', '3.2.13'
 
 gem 'pg', '0.15.1'
 gem 'haml', '4.0.2'
-
+gem 'pry'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -21,6 +21,15 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
+group :development, :test do
+	gem "rspec"
+	gem 'rspec-core'
+	gem 'rspec-expectations'
+	gem 'rspec-mocks'
+	gem 'rspec-rails'
+	gem 'simplecov'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
