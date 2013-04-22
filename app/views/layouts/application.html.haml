@@ -12,14 +12,20 @@
           .container
             .brand
               OpenShop
+            .nav-collapse.collapse
+              %form.navbar-search{:style => "margin-top: 17px"}
+                %input.search-query{:placeholder => "Buscar", :type => "text"}
             %nav#mainMenu.clearfix
               %ul.pull-right
                 - unless user_signed_in?
-                  = link_to "Iniciar Sesión", "#loginWindow", "data-toggle" => "modal", :role => "button"
-                - else
-
                   %li
-                    = link_to current_user.first_name, root_path, :role => "button", :class => "firstLevel"
+                    = link_to "Iniciar Sesión", "#loginWindow", "data-toggle" => "modal", :role => "button"
+                - else
+                  %li
+                    = link_to "Mi Cuenta", root_path, :role => "button", :class => "firstLevel"
+                  %li
+                    = link_to destroy_user_session_path, :method => :delete do
+                      %i.icon-logout{:role => "button"}
       - if flash[:notice]
         .alert.alert-success{:style => "margin-bottom: 0px;"}
           %button.close{"data-dismiss" => "alert", :type => "button"} x
@@ -28,8 +34,8 @@
         .alert.alert-error{:style => "margin-bottom: 0px;"}
           %button.close{"data-dismiss" => "alert", :type => "button"} ×
           = flash[:alert]
-      .container
-        = yield
+
+      = yield
 #loginWindow.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1", :style => "width: 300px; margin-left: -150px"}
   .modal-header
     %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
@@ -46,4 +52,3 @@
       Google Plus
   .modal-footer
     %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Cerrar
-%script{:src => "../assets/custom.js"}
