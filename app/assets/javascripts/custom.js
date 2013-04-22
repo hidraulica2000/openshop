@@ -869,7 +869,7 @@ function animateTxt(curSlide, state){
         scrollSpeed: 300,
         easingType: 'linear'
     },
-    settings = $.extend(defaults),
+    settings = defaults,
     containerIDhash = '#' + settings.containerID,
     containerHoverIDHash = '#'+settings.containerHoverID;
 

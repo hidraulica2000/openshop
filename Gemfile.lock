@@ -116,7 +116,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
-  devise
+  devise (= 2.2.3)
   haml (= 4.0.2)
   jquery-rails
   pg (= 0.15.1)

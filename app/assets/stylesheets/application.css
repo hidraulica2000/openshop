@@ -19,3 +19,6 @@ body{
   text-align: center;
   margin: 0 auto;
 }
+#mainHeader{
+  padding-top: 30px;
+}
