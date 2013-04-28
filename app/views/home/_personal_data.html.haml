@@ -1,0 +1,50 @@
+= form_for(current_user, :url => registration_path(current_user), :html => { :method => :put }) do |f|
+  #edit
+    = link_to root_path, :class => "btn btn-primary btn-small", :onclick => "activate()", :remote => true do
+      %i.icon-edit
+      Editar
+  #update{:style => "display: none"}
+    = button_tag(:type => 'submit', :class => 'btn btn-primary btn-small') do
+      %i.icon-floppy
+      Guardar
+    = link_to root_path, :class => "btn btn-danger btn-small", :onclick => "deactivate()", :remote => true do
+      %i.icon-cancel
+      Cancelar
+  .divider
+    %span
+  .control-group
+    %label Nombre:
+    = f.text_field :first_name, :autofocus => true, :class => "input-xxlarge", :disabled => true
+  .control-group
+    %label Apellido:
+    = f.text_field :last_name, :class => "input-xxlarge", :disabled => true
+  .control-group
+    %label Email:
+    = f.email_field :email, :class => "input-xxlarge", :disabled => true
+  .control-group
+    %label
+      Contraseña:
+      %i (Déjala en blanco si no deseas cambiarla)
+    = f.password_field :password, :autocomplete => "off", :class => "input-xxlarge", :disabled => true
+  .control-group
+    %label Confirmación de contraseña:
+    = f.password_field :password_confirmation, :class => "input-xxlarge", :disabled => true
+  .control-group
+    %label
+      Contraseña actual:
+      %i (Necesitamos tu contraseña actual para confirmar tus cambios)
+    = f.password_field :current_password, :class => "input-xxlarge", :disabled => true, :required => true
+%script
+  function activate(){
+  $('.input-xxlarge').prop("disabled", false);
+  $('.control-group').addClass('info');
+  $('#edit').hide();
+  $('#update').show();
+  }
+%script
+  function deactivate(){
+  $('.input-xxlarge').prop("disabled", true);
+  $('.control-group').removeClass('info');
+  $('#update').hide();
+  $('#edit').show();
+  }

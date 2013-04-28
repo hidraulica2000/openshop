@@ -10,15 +10,55 @@
  *
  *= require_self
  *= require_tree .
-*/
+ */
+.white {
+  background: #fff;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+#file {
+  display: none;
+}
+.dummyfile input[type="text"] {
+  width: 200px;
+  display: inline;
+}
+.dummyfile a{
+  vertical-align: 0px;
+}
+.cover_hover{
+  box-shadow: 0px 0px 3px 2px yellow;
+}
+#market_city{
+  width: 315px;
+}
+.mention_image{
+  width: 20px;
+  height: 20px;
+}
+.cover{
+  min-width: 1166px;
+  width: 1166px;
+  height: 440px;
+}
+.avatar{
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  right: 0px;
+  bottom: 0px;
+  top: 67.5%;
+  left: 45px;
+}
+div#profile_cover #form{
+  display: none;
+}
+div#profile_cover:hover #form{
+  display: block;
+}
 body{
-  padding-top: 40px;
+  padding-top: 60px;
 }
 .form{
-  width: 260px;
-  text-align: center;
-  margin: 0 auto;
-}
-#mainHeader{
-  padding-top: 30px;
+  width: 15%;
 }

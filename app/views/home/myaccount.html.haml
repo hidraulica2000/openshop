@@ -1,0 +1,31 @@
+.container
+  %h2= "#{current_user.name} - Cuenta"
+  .tabbable.tabs-left
+    %ul.nav.nav-tabs
+      %li{:class => "#{if (params[:tab] == 'personal' || !params[:tab]) then 'active' else '' end}"}
+        %a{"data-toggle" => "tab", :href => "#tab1"} Datos Personales
+      %li{:class => "#{'active' if params[:tab] == 'store'}"}
+        %a{"data-toggle" => "tab", :href => "#tab2"} Tiendas
+    .tab-content
+      #tab1{:class => "#{if (params[:tab] == 'personal' || !params[:tab]) then 'tab-pane active'  else 'tab-pane' end}"}
+        = render "personal_data"
+      #tab2{:class => "#{if (params[:tab] == 'store') then 'tab-pane active'  else 'tab-pane' end}"}
+        - unless @stores.empty?
+          - @stores.each do |store|
+            .white-card
+              %h5= store.title
+              %p= store.description
+              %small
+                %i.icon-trash
+                = link_to "Eliminar", root_path
+                |
+                %i.icon-eye
+                = link_to "Ver", store_path(store)
+                |
+                %i.icon-edit
+                = link_to "Editar", edit_store_path(store)
+          %strong= link_to "Crear otra tienda", new_store_path,  :class => "btn btn-primary btn-block"
+        - else
+          %blockquote
+            No tienes ninguna tienda aún.
+            %strong= link_to "Haz click aqui para crear una", new_store_path

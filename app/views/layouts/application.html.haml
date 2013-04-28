@@ -1,41 +1,52 @@
 !!!
 %html
   %head
-    %title Openshop
-    = stylesheet_link_tag    "application", :media => "all"
-    = javascript_include_tag "application", :media => "all"
+    %title OpenShop
+    = stylesheet_link_tag   "application", :media => "all"
+    = javascript_include_tag "application"
     = csrf_meta_tags
+    %link{:href => "http://fonts.googleapis.com/css?family=Abel:400|Oswald:300,400,700", :media => "all", :rel => "stylesheet", :type => "text/css"}
+    %link{:href => "assets/jquery.bxslider.css", :rel => "stylesheet"}
+    %meta{:charset => "utf-8"}
+    %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}
+    %meta{:content => "", :name => "description"}
+    %meta{:content => "width=device-width", :name => "viewport"}
+    %script{:href => "assets/load-image.min.js"}
+    %script{:src => "//cdn.sublimevideo.net/js/txz0ylvb.js", :type => "text/javascript"}
   %body
-    %header#mainHeader.clearix
-      .navbar.navbar-fixed-top
-        .navbar-inner
-          .container
-            .brand
-              OpenShop
-            .nav-collapse.collapse
-              %form.navbar-search{:style => "margin-top: 17px"}
-                %input.search-query{:placeholder => "Buscar", :type => "text"}
-            %nav#mainMenu.clearfix
-              %ul.pull-right
-                - unless user_signed_in?
-                  %li
-                    = link_to "Iniciar Sesión", "#loginWindow", "data-toggle" => "modal", :role => "button"
-                - else
-                  %li
-                    = link_to "Mi Cuenta", root_path, :role => "button", :class => "firstLevel"
-                  %li
-                    = link_to destroy_user_session_path, :method => :delete do
-                      %i.icon-logout{:role => "button"}
-      - if flash[:notice]
-        .alert.alert-success{:style => "margin-bottom: 0px;"}
-          %button.close{"data-dismiss" => "alert", :type => "button"} x
-          = flash[:notice]
-      - if flash[:alert]
-        .alert.alert-error{:style => "margin-bottom: 0px;"}
-          %button.close{"data-dismiss" => "alert", :type => "button"} ×
-          = flash[:alert]
+    %div.navbar.navbar-fixed-top.navbar-inverse
+      %div.navbar-inner
+        %div.container
+          = link_to "OpenShop", root_path, class: "brand"
+          %div.nav-collapse.subnav-collapse.pull-right.collapse{:id=> "top-navigation"}
+            %ul.nav
+              - if user_signed_in?
+                %li.tabli= link_to "Mi Cuenta", myaccount_path
+                %li.tabli
+                  = link_to destroy_user_session_path, :method => :delete do
+                    %i.icon-signout
+              - else
+                %li.tabli= link_to "Iniciar Sesión", "#loginWindow", "data-toggle" => "modal"
 
-      = yield
+      - if flash[:notice]
+        %script
+          $(function(){
+          $.pnotify({
+          text: '#{flash[:notice]}',
+          type: 'success',
+          history: false
+          });
+          });
+      - if flash[:alert]
+        %script
+          $(function(){
+          $.pnotify({
+          text: '#{flash[:alert]}',
+          type: 'error',
+          history: false
+          });
+          });
+    = yield
 #loginWindow.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1", :style => "width: 300px; margin-left: -150px"}
   .modal-header
     %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
@@ -52,3 +63,11 @@
       Google Plus
   .modal-footer
     %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Cerrar
+%script
+  $('.tabli').hover(
+  function () {
+  $(this).addClass('active');},
+  function () {
+  $(this).removeClass('active');
+  }
+  );

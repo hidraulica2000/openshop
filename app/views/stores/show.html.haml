@@ -1,0 +1,25 @@
+.container
+  %ul.breadcrumb
+    %li
+      = link_to "Mi Cuenta", myaccount_path
+    %li.active= @store.title
+  .hero-unit{:style => "background-image:url('../assets/textures/blue5.jpg');"}
+    %h1= @store.title
+  .single-post-w
+    %ul.nav.nav-pills{:style => "margin-bottom: 10px"}
+      %li
+        = link_to new_store_product_path(@store) do
+          %i.icon-basket
+          Agregar Producto
+    #products
+      %ul.thumbnails
+        - @store.products.each do |product|
+          .span3
+            .white-card
+              %h5= product.title
+              %p= product.description
+              %h5
+                %i.icon-tag
+                = product.price
+                \-
+                = product.condition

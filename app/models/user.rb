@@ -7,5 +7,11 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :first_name, :last_name, :birthdate, :email, :password, :password_confirmation, :remember_me
-  # attr_accessible :title, :body
+  validates_presence_of :birthdate
+
+  has_many :stores
+
+  def name
+    "#{self.first_name} #{self.last_name}"
+  end
 end

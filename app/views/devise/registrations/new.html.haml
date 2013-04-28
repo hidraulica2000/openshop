@@ -1,36 +1,37 @@
-%legend Registrarme
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :class => "form-horizontal") do |f|
-  = devise_error_messages!
-  .fieldset
-    %div
-      Nombre
-      %br
-      = f.text_field :first_name, :autofocus => true, :class => "input-xlarge"
-    %div
-      Apellido
-      %br
-      = f.text_field :last_name, :class => "input-xlarge"
-    %div
-      Correo Electrónico
-      %br
-      = f.email_field :email, :class => "input-xlarge"
-    %div
-      Fecha de nacimiento
-      %br
-      #dp3.input-append.date{"data-date" => Time.now, "data-date-format" => "dd-mm-yyyy", "data-date-viewMode" => "years"}
-        = f.text_field :birthdate, :class => "span3", :size => "16", :type => "text", :disabled => true
-        %span.add-on
-          %i.icon-calendar
-    %div
-      Contraseña
-      %br
-      = f.password_field :password, :class => "input-xlarge"
-    %div
-      Confirmación de Contraseña
-      %br
-      = f.password_field :password_confirmation, :class => "input-xlarge"
-    .form-actions
-      = f.submit "Registrarme", :class => "btn btn-success"
-= render "devise/shared/links"
-%script
-  $('#dp3').datepicker()
+.container
+  %legend Registrarme
+  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :class => "form-horizontal") do |f|
+    = devise_error_messages!
+    .fieldset
+      %div
+        Nombre
+        %br
+        = f.text_field :first_name, :autofocus => true, :class => "input-xlarge"
+      %div
+        Apellido
+        %br
+        = f.text_field :last_name, :class => "input-xlarge"
+      %div
+        Correo Electrónico
+        %br
+        = f.email_field :email, :class => "input-xlarge"
+      %div
+        Fecha de nacimiento
+        %br
+        #dp3.input-append.date{"data-date" => Time.now, "data-date-format" => "yyyy-mm-dd", "data-date-viewMode" => "years"}
+          = f.text_field :birthdate, :class => "span3", :size => "16", :type => "text", :readonly => true
+          %span.add-on
+            %i.icon-calendar
+      %div
+        Contraseña
+        %br
+        = f.password_field :password, :class => "input-xlarge"
+      %div
+        Confirmación de Contraseña
+        %br
+        = f.password_field :password_confirmation, :class => "input-xlarge"
+      .form-actions
+        = f.submit "Registrarme", :class => "btn btn-success"
+  = render "devise/shared/links"
+  %script
+    $('#dp3').datepicker()

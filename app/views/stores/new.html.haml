@@ -1,0 +1,16 @@
+.container{:style => "padding-top: 30px"}
+  %section.clearfix.mb15
+    %h2= "#{current_user.name} - Crear Tienda"
+    .divider
+      %span
+    = form_for(@store, :html => {:class => "form-horizontal"}) do |f|
+      .control-group
+        %label.control-label Titulo
+        .controls
+          = f.text_field :title, :class => "input-xxlarge", :placeholder => "Tienda de #{current_user.name}"
+      .control-group
+        %label.control-label Descripción
+        .controls
+          = f.text_area :description, :class => "input-xxlarge", :placeholder => "Una pequeña descripción de tu tienda...", :type => "text", :required => true, :cols => "40", :rows => "5"
+      .form-actions
+        = f.submit "Crear", :class => "btn btn-3d btn-3d-medium"

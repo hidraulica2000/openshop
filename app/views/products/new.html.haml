@@ -1,0 +1,38 @@
+.container
+  %ul.breadcrumb
+    %li
+      = link_to "Mi Cuenta", myaccount_path
+    %li
+      = link_to @store.title, store_path(@store)
+    %li.active Agregar Producto
+  = form_for([@store, @product], :html => {:class => "form-horizontal"}) do |f|
+    .control-group
+      %label.control-label Titulo
+      .controls
+        = f.text_field :title, :class => "input-xxlarge", :placeholder => "Muñeca System"
+    .control-group
+      %label.control-label Descripción
+      .controls
+        = f.text_area :description, :class => "input-xxlarge", :placeholder => "Una pequeña descripción de tu producto...", :type => "text", :required => true, :cols => "40", :rows => "5"
+    .control-group
+      %label.control-label Condición
+      .controls
+        = f.select(:condition, ["Nuevo","Usado"], {:required => true}, :style => "width: 315px")
+    .control-group
+      %label.control-label Precio
+      .controls
+        .input-prepend
+          %span.add-on $
+          = f.text_field :price, :style => "width: 273px;", :type => "text", :value => "75000", :required => true
+    .control-group
+      %label.control-label Publicar
+      .controls
+        = f.check_box :published
+      .controls
+        = check_box_tag "accept_checkbox", 1, :required => true
+        .checkbox.inline{:style => "padding: 0px"}
+          %small Acepto los
+          %small= link_to " Términos y Condiciones ", "#", "data-target" => "#myModal", "data-toggle" => "modal"
+          %small de Openshop
+    .form-actions
+      = f.submit "Crear", :class => "btn btn-primary btn-large"

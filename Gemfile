@@ -6,7 +6,7 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg', '0.15.1'
-gem 'haml', '4.0.2'
+gem 'haml-rails', '0.4'
 gem 'pry'
 gem 'devise', '2.2.3'
 # Gems used only for assets and not required
@@ -21,7 +21,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails', '2.1.3'
+gem 'jquery-rails', '2.2.1'
 
 group :development, :test do
 	gem "rspec"
