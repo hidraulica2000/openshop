@@ -1,5 +1,13 @@
-require 'spec_helper'
+require "spec_helper"
 
-describe Product do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Product, "Relations" do
+	it { should belong_to(:store) }
+end
+
+describe Product, "Validations" do
+  pending "it.."
+end
+
+describe Product, "Methods" do
+  pending "it.."
 end

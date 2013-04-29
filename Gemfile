@@ -7,7 +7,7 @@ gem 'rails', '3.2.13'
 
 gem 'pg', '0.15.1'
 gem 'haml-rails', '0.4'
-gem 'pry'
+gem 'pry', '0.9.12.1'
 gem 'devise', '2.2.3'
 # Gems used only for assets and not required
 # in production environments by default.
@@ -24,12 +24,13 @@ end
 gem 'jquery-rails', '2.2.1'
 
 group :development, :test do
-	gem "rspec"
-	gem 'rspec-core'
-	gem 'rspec-expectations'
-	gem 'rspec-mocks'
-	gem 'rspec-rails'
-	gem 'simplecov'
+	gem 'rspec-rails', '2.13.0'
+  gem 'simplecov', :require => false
+end
+
+group :test do
+  gem 'factory_girl_rails', '4.2.1'
+  gem 'shoulda', '3.4.0'
 end
 
 # To use ActiveModel has_secure_password
